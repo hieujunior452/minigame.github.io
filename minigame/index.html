@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✨ Đuổi Hình Bắt Chữ ✨</title>
+  
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto:wght@400;500;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #0a2e1a, #1a4d2e);
+      color: #fff;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      padding: 15px 20px;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      margin: 8px 0 5px;
+      background: linear-gradient(90deg, #ffd700, #ffffff, #ffd700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: #ffeb3b;
+      margin-bottom: 8px;
+    }
+
+    .round {
+      font-size: 24px;
+      color: #ffeb3b;
+      margin: 5px 0 15px;
+    }
+
+    .image-box {
+      margin: 10px auto;
+      max-width: 720px;
+      padding: 10px;
+      background: rgba(255,255,255,0.1);
+      border: 4px solid #ffd700;
+      border-radius: 20px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .answer {
+      font-size: 30px;
+      font-weight: bold;
+      min-height: 65px;
+      margin: 15px 0;
+      text-shadow: 0 0 20px #ffd700;
+    }
+
+    .buttons {
+      margin: 10px 0;
+    }
+
+    button {
+      padding: 14px 28px;
+      margin: 6px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-hint { background: linear-gradient(#f39c12, #e67e22); }
+    .btn-answer { background: linear-gradient(#e74c3c, #c0392b); }
+    .btn-next { background: linear-gradient(#27ae60, #219a52); }
+
+    .hint {
+      background: rgba(255, 215, 0, 0.2);
+      border: 3px solid #ffd700;
+      padding: 15px;
+      border-radius: 15px;
+      margin: 10px auto;
+      max-width: 780px;
+      font-size: 18px;
+      min-height: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="tsparticles"></div>
+
+  <div class="container">
+    <h1>✨ Đuổi Hình Bắt Chữ ✨</h1>
+    <p class="subtitle"><i class="fas fa-coins"></i> Thấu Hiểu Tài Chính Cá Nhân</p>
+    
+    <div class="round" id="round">Câu 1 / 12</div>
+
+    <div class="image-box">
+      <img id="image" src="https://via.placeholder.com/720x360/0a2e1a/ffd700?text=Thay+Hình+Ảnh+Vào+Đây" alt="Hình ảnh">
+    </div>
+
+    <div class="answer" id="answer">Đáp án sẽ hiện tại đây...</div>
+
+    <div class="buttons">
+      <button class="btn-hint" onclick="showHint()"><i class="fas fa-lightbulb"></i> Gợi Ý</button>
+      <button class="btn-answer" onclick="showAnswer()"><i class="fas fa-eye"></i> Hiện Đáp Án</button>
+      <button class="btn-next" onclick="nextQuestion()"><i class="fas fa-arrow-right"></i> Câu Tiếp Theo</button>
+    </div>
+
+    <div class="hint" id="hint"></div>
+  </div>
+
+  <script>
+    tsParticles.load("tsparticles", {
+      particles: {
+        color: { value: ["#ffd700", "#ffeb3b"] },
+        number: { value: 70 },
+        size: { value: { min: 2, max: 5 } },
+        move: { enable: true, speed: 1.2, direction: "bottom" }
+      }
+    });
+
+    const questions = [
+            { 
+                image: "/images/1.png", 
+                answer: "Ghi chép kiến thức", 
+                hint: "Thầy cô hay nhắc phải chuẩn bị bút giấy để..." 
+            },
+            { 
+                image: "/images/2.png", 
+                answer: "Niềm tin về tiền", 
+                hint: "Điều đầu tiên của sự thịnh vượng" 
+            },
+            { 
+                image: "/images/3.png", 
+                answer: "Ba niềm tin hạn chế", 
+                hint: "Tiền xấu, tiền tội lỗi, tiền gây rắc rối" 
+            },
+            { 
+                image: "/images/4.png", 
+                answer: "Tiền Đỏ", 
+                hint: "Tiền từ cờ bạc, lòng tham, bất an" 
+            },
+            { 
+                image: "/images/5.png", 
+                answer: "Tiền Xanh", 
+                hint: "Tiền từ lao động chân chính, mang lại hạnh phúc" 
+            },
+            { 
+                image: "/images/6.png", 
+                answer: "Hai vị thần tài lộc", 
+                hint: "Cha mẹ là… trong gia đình" 
+            },
+            { 
+                image: "/images/7.png", 
+                answer: "Lòng hiếu thảo", 
+                hint: "Điều giúp thu hút tiền bạc và may mắn" 
+            },
+            { 
+                image: "/images/8.png", 
+                answer: "Lòng biết ơn", 
+                hint: "Khi biến mất thì lãnh thổ cũng biến mất" 
+            },
+            { 
+                image: "/images/9.png", 
+                answer: "Dòng chảy thịnh vượng", 
+                hint: "Bị tắc khi keo kiệt" 
+            },
+            { 
+                image: "/images/10.png", 
+                answer: "Gieo nhân gặt quả", 
+                hint: "Cho đi trước khi nhận (Hào phóng)" 
+            },
+            { 
+                image: "/images/11.png", 
+                answer: "Hào phóng / Cho đi", 
+                hint: "Rockefeller cho 60%, Gates cho 95%" 
+            },
+            { 
+                image: "/images/12.png", 
+                answer: "Hiếu thảo với cha mẹ", 
+                hint: "Thần tượng bóng đá mà cô trang rất thích" 
+            }
+        
+        ];
+
+    let current = 0;
+
+    function loadQuestion() {
+      document.getElementById("round").textContent = `Câu ${current + 1} / ${questions.length}`;
+      document.getElementById("image").src = questions[current].image;
+      document.getElementById("answer").textContent = "Đáp án sẽ hiện tại đây...";
+      document.getElementById("hint").innerHTML = "";
+    }
+
+    function showHint() {
+      document.getElementById("hint").innerHTML = `<strong>💡 Gợi ý:</strong> ${questions[current].hint}`;
+    }
+
+    function showAnswer() {
+      document.getElementById("answer").innerHTML = `<span style="color:#ffd700;">${questions[current].answer}</span>`;
+    }
+
+    function nextQuestion() {
+      current = (current + 1) % questions.length;
+      loadQuestion();
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
