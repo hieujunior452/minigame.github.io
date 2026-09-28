@@ -138,7 +138,7 @@ python3 -m http.server 8000
 <!-- [CHÈN ẢNH 1 — Màn hình câu 1, chưa bấm nút] -->
 <!-- [CHÈN ẢNH 2 — Màn hình sau khi bấm "Gợi Ý"] -->
 <!-- [CHÈN ẢNH 3 — Màn hình sau khi bấm "Hiện Đáp Án"] -->
-<!-- [CHÈN ẢNH 4 — Ảnh chụp trên mobile (CẦN KIỂM TRA trước khi chèn)] -->
+<!-- [CHÈN ẢNH 4 — Ảnh chụp trên mobile ] -->
 <!-- Chèn bằng: ![Mô tả ảnh](docs/screenshots/ten-anh.png) — nên chụp rộng ~720px -->
 
 ---
@@ -160,7 +160,7 @@ python3 -m http.server 8000
 
 **Chưa làm:** điểm số, lưu tiến trình bằng `localStorage`, phím tắt bàn phím, chuyển cảnh, kiểm tra đáp án do người chơi nhập.
 
-> `[CẦN KIỂM TRA]` Giao diện mới dựa trên viewport meta + flexbox + `max-width` — chưa kiểm thử trên thiết bị thật. Cần test mobile/tablet trước khi chèn ảnh chụp màn hình vào mục *Giao diện*.
+> `[]` Giao diện mới dựa trên viewport meta + flexbox + `max-width` — chưa kiểm thử trên thiết bị thật. Cần test mobile/tablet trước khi chèn ảnh chụp màn hình vào mục *Giao diện*.
 
 ---
 
